@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { APIPokemonServiceService } from '../apipokemon-service.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-my-component',
@@ -8,45 +10,30 @@ import { Component, OnInit } from '@angular/core';
 export class MyComponentComponent implements OnInit {
 
   id: string = '';
-  listId = [
-    {
-      value: 1,
-      name:"Bulbizarre"
-    },
-    {
-      value: 2,
-      name:"Herbizarre"
-    },
-    {
-      value: 3,
-      name:"Florizarre"
-    },
-    {
-      value: 4,
-      name:"Salamèche"
-    },
-    {
-      value: 5,
-      name:"mahjoub"
-    },
-    {
-      value: 6,
-      name:"Reptincel"
-    },
-    {
-      value: 7,
-      name:"yoyo"
-    },
-   
-]
+  name:string=' ';
+  listId = [];
 
-  constructor() { }
+  constructor(private service:APIPokemonServiceService) { }
 
   valider(event: any) {
+
     console.log(this.id)
+    this.service.getPokemon(1).subscribe(res => console.log(res.forms[0].name));
   }
 
   ngOnInit() {
+
+    this.service.getListe().subscribe(res => {
+      res.results.forEach((element , index) => {
+          this.listId.push({
+            id: index,
+            name: element.name
+          });        
+      });
+      
+      //console.log(res.results);
+    });
+
   }
 
 }
