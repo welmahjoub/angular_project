@@ -10,15 +10,15 @@ import { element } from 'protractor';
 export class MyComponentComponent implements OnInit {
 
   id: string = '';
-  name:string=' ';
+  name:string='';
   listId = [];
 
   constructor(private service:APIPokemonServiceService) { }
 
   valider(event: any) {
 
-    console.log(this.id)
-    this.service.getPokemon(1).subscribe(res => console.log(res.forms[0].name));
+
+    this.service.getPokemon(parseInt(this.id)+1).subscribe(res => console.log(res.forms[0].name));
   }
 
   ngOnInit() {

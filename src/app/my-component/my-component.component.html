@@ -1,12 +1,12 @@
 <p>my-component works!</p>
 
-<input [(ngModel)]="id">
+<input [(ngModel)]="name">
 
 <!--<div class="rows"><input type="text"  [(ngModel)]="id" readonly></div>-->
 
 <div class="rows"> 
     <select [(ngModel)]="id">
-        <option *ngFor="let idPok of (listId | filterPokemonPipe:'name':id )">{{idPok.name}} </option>
+        <option *ngFor="let Pok of (listId | filterPokemonPipe:'name':name)" value="{{Pok.id}}">{{Pok.name}} </option>
     </select>
 </div>
 
