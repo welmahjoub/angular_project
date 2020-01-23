@@ -2,11 +2,13 @@
 
 <input [(ngModel)]="id">
 
-<div class="rows"><input type="text"  [(ngModel)]="id" readonly></div>
+<!--<div class="rows"><input type="text"  [(ngModel)]="id" readonly></div>-->
 
 <div class="rows"> 
     <select [(ngModel)]="id">
-        <option *ngFor="let id of listId">{{id.value}} </option>
+        <option *ngFor="let idPok of (listId | filterPokemonPipe:'name':id )">{{idPok.name}} </option>
     </select>
 </div>
+
+<div class="rows"><button type="submit"  (click)="valider($event)">GO</button></div>
 
