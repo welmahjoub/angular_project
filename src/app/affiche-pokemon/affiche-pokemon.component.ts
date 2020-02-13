@@ -34,6 +34,7 @@ export class AffichePokemonComponent implements OnInit, MyObserver {
   }
 
   updtate(id: string) {
+    console.log("hiiii");
     this.idPokemon=id;
     this.getPoke();
   }

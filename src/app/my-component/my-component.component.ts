@@ -27,7 +27,7 @@ export class MyComponentComponent implements OnInit {
       console.log(res.name);
     });*/
 
-    this.idPokService.id = this.id;
+    this.idPokService.setId(this.id);
 
     this.click=true;
   }
