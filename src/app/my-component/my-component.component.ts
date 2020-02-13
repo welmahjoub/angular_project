@@ -14,13 +14,16 @@ export class MyComponentComponent implements OnInit {
   name:string='';
   listId = [];
   click:boolean=false;
+
   constructor(private service:APIPokemonServiceService) { }
 
   valider(event: any) {
 
+    var pok=this.service.getPokemon(this.id);
+    pok.subscribe(res=>{
+      console.log(res.name);
+    });
 
-    var pok=this.service.getPokemon(parseInt(this.id)+1);
-  //  console.log(pok);
     this.click=true;
   }
 
@@ -29,11 +32,11 @@ export class MyComponentComponent implements OnInit {
     this.service.getListe().subscribe(res => {
       res.results.forEach((element , index) => {
           this.listId.push({
-            id: index,
+            id: index + 1,
             name: element.name
-          });        
+          });
       });
-      
+
       //console.log(res.results);
     });
 

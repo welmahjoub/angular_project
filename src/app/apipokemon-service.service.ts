@@ -95,15 +95,16 @@ export class APIPokemonServiceService {
     return this.httpService.get<IPokemons>('https://pokeapi.co/api/v2/pokemon/');
   }
 
-  /*getPokemon(poke:any):Observable<any>{
-    return this.httpService.get('https://pokeapi.co/api/v2/pokemon/'+poke);
-    //return this.httpService.get('https://pokeapi.co/api/v2/pokemon/1/');
-  }*/
-
   getPokemon(poke:any):Observable<Pokemon>{
-     return this.httpService.get<Pokedex>('https://pokeapi.co/api/v2/pokemon/'+poke).pipe( map((res :Pokedex) =>  
-      {      
-        console.log(res.name);   
+
+    return this.httpService.get<Pokemon>('https://pokeapi.co/api/v2/pokemon/'+poke);
+    //return this.httpService.get('https://pokeapi.co/api/v2/pokemon/1/');
+  }
+
+  /*getPokemon(poke:any):Observable<Pokemon>{
+     return this.httpService.get<Pokedex>('https://pokeapi.co/api/v2/pokemon/'+poke).pipe( map((res :Pokedex) =>
+      {
+        console.log(res.name);
         let p = new Pokemon();
         p.namePokemon=res.name;
         p.idPokemon=poke;
@@ -111,5 +112,6 @@ export class APIPokemonServiceService {
         return p;
       } )
      )
-  }
+  }*/
+
 }

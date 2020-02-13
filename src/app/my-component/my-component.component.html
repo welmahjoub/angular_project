@@ -4,7 +4,7 @@
 
 <!--<div class="rows"><input type="text"  [(ngModel)]="id" readonly></div>-->
 
-<div class="rows"> 
+<div class="rows">
     <select [(ngModel)]="id">
         <option *ngFor="let Pok of (listId | filterPokemonPipe:'name':name)" value="{{Pok.id}}">{{Pok.name}} </option>
     </select>
@@ -15,8 +15,8 @@
 <div *ngIf="click">
 
 
-<app-affiche-pokemon [idPokemon]="id">
+  <app-affiche-pokemon [idPokemon]="id">
 
-</app-affiche-pokemon>
+  </app-affiche-pokemon>
 
 </div>

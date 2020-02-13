@@ -8,18 +8,22 @@ import { Pokemon } from '../pokemon';
   styleUrls: ['./affiche-pokemon.component.css']
 })
 export class AffichePokemonComponent implements OnInit {
-  @Input() idPokemon :number;
+  @Input() idPokemon :string;
   pok:Pokemon;
-  
-  constructor(private service:APIPokemonServiceService) { 
-   
+
+  constructor(private service:APIPokemonServiceService) {
+   // pok=new Pokemon("","");
   }
 
   ngOnInit() {
 
     console.log(this.idPokemon);
-    this.service.getPokemon(this.idPokemon+1).subscribe(res => this.pok =res);
-    
+    this.service.getPokemon(this.idPokemon).subscribe(res =>{
+      //this.pok.idPokemon=this.idPokemon;
+      //this.pok.namePokemon=res.name;
+        this.pok =new Pokemon(this.idPokemon,res.name);
+    });
+
   }
 
 }
