@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APIPokemonServiceService } from '../apipokemon-service.service';
 import { element } from 'protractor';
+import {IdPokemonService} from '../id-pokemon.service';
 
 @Component({
   selector: 'app-my-component',
@@ -15,14 +16,18 @@ export class MyComponentComponent implements OnInit {
   listId = [];
   click:boolean=false;
 
-  constructor(private service:APIPokemonServiceService) { }
+  constructor(private service:APIPokemonServiceService, private idPokService: IdPokemonService) { }
 
   valider(event: any) {
 
-    var pok=this.service.getPokemon(this.id);
+
+
+   /* var pok=this.service.getPokemon(this.id);
     pok.subscribe(res=>{
       console.log(res.name);
-    });
+    });*/
+
+    this.idPokService.id = this.id;
 
     this.click=true;
   }
